@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Faculty xmlns="https://ww2.mini.pw.edu.pl/dla-studenta/plan/">
+  <Teachers>
+    <Teacher login="rankina">
+      <Name>Angus</Name>
+      <Surname>Rankin</Surname>
+      <Classes>
+        <CoursePartReference code="1120002lc">
+          <Students>
+            <ErasmusStudent specialcode="K-2SO" />
+            <StudentReference login="" />
+            <StudentReference login="" />
+            <StudentReference login="" />
+          </Students>
+        </CoursePartReference>
+        <CoursePartReference code="1120002ww">
+          <Students>
+            <StudentReference login="" />
+            <StudentReference login="" />
+            <StudentReference login="" />
+          </Students>
+        </CoursePartReference>
+      </Classes>
+    </Teacher>
+    <Teacher login="coopern">
+      <Name>Noah</Name>
+      <Surname>Cooper</Surname>
+      <Classes>
+        <CoursePartReference code="1120001ex">
+          <Students>
+            <StudentReference login="" />
+            <StudentReference login="" />
+            <StudentReference login="" />
+          </Students>
+        </CoursePartReference>
+        <CoursePartReference code="1120002pr">
+          <Students>
+            <StudentReference login="" />
+            <StudentReference login="" />
+            <StudentReference login="" />
+          </Students>
+        </CoursePartReference>
+      </Classes>
+    </Teacher>
+    <Teacher login="martinj">
+      <Name>Jackie</Name>
+      <Surname>Martin</Surname>
+      <Classes>
+        <CoursePartReference code="1120001ex">
+          <Students>
+            <StudentReference login="" />
+            <StudentReference login="" />
+            <StudentReference login="" />
+          </Students>
+        </CoursePartReference>
+        <CoursePartReference code="1120002pr">
+          <Students>
+            <StudentReference login="" />
+            <StudentReference login="" />
+            <StudentReference login="" />
+          </Students>
+        </CoursePartReference>
+      </Classes>
+    </Teacher>
+  </Teachers>
+  <Students>
+    <Student login="kramerm">
+      <Name>Melissa</Name>
+      <Surname>Kramer</Surname>
+    </Student>
+    <Student login="martinj">
+      <Name>Jackie</Name>
+      <Surname>Martin</Surname>
+    </Student>
+    <Student login="moord">
+      <Name>Dawn</Name>
+      <Surname>Moor</Surname>
+    </Student>
+    <Student login="mcvvoyd">
+      <Name>Donald</Name>
+      <Surname>McAvoy</Surname>
+    </Student>
+    <Student login="whitmane">
+      <Name>Elizabeth</Name>
+      <Surname>Whitman</Surname>
+    </Student>
+    <Student login="timmsm">
+      <Name>Margaret</Name>
+      <Surname>Timms</Surname>
+    </Student>
+    <Student login="begleyk">
+      <Name>Kenneth</Name>
+      <Surname>Begley</Surname>
+    </Student>
+    <Student login="gordonj">
+      <Name>James</Name>
+      <Surname>Gordon</Surname>
+    </Student>
+  </Students>
+  <Courses>
+    <Course name="Projects and developement">
+      <CoursePart code="1120001ex" type="computerclass" weekhours="4" />
+    </Course>
+    <Course name="Business software deployement">
+      <CoursePart code="1120002lc" type="lecture" weekhours="2"  />
+      <CoursePart code="1120002pr" type="project" weekhours="3"  />
+    </Course>
+  </Courses>
+</Faculty>

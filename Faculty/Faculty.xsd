@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified"
+           elementFormDefault="qualified"
+           targetNamespace="https://ww2.mini.pw.edu.pl/dla-studenta/plan/"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="https://ww2.mini.pw.edu.pl/dla-studenta/plan/"
+           xmlns:b="https://ww2.mini.pw.edu.pl/dla-studenta/plan/">
+  
+  <xs:simpleType name="loginConstraint">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="^[a-z]+[0-9]?$" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="courseCodeConstraint">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="^1120\d{3}(lc|lb|pr|ex)" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="courseType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="lecture" />
+      <xs:enumeration value="exercises" />
+      <xs:enumeration value="laboratories" />
+      <xs:enumeration value="project" />
+    </xs:restriction>
+  </xs:simpleType>
+    
+  <xs:element name="Faculty">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Teachers">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Teacher">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Name" type="xs:string" />
+                    <xs:element name="Surname" type="xs:string" />
+                    <xs:element name="Classes">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="CoursePartReference">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Students">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element maxOccurs="unbounded" name="StudentReference">
+                                        <xs:complexType>
+                                          <xs:attribute name="login" type="loginConstraint" use="required" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute name="code" type="xs:string" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="login" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Students">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Student">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Name" type="xs:string" />
+                    <xs:element name="Surname" type="xs:string" />
+                  </xs:sequence>
+                  <xs:attribute name="login" type="loginConstraint" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Courses">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Course">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="CoursePart">
+                      <xs:complexType>
+                        <xs:attribute name="code" type="courseCodeConstraint" use="required" />
+                        <xs:attribute name="type" type="courseType" use="required" />
+                        <xs:attribute name="weekhours" type="xs:unsignedByte" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="name" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+    
+    <xs:key name="COURSEPART_CODE">
+      <xs:selector xpath="b:Courses/b:Course/b:CoursePart" />
+      <xs:field xpath="@code" />
+    </xs:key>
+
+    <xs:keyref refer="COURSEPART_CODE" name ="CPAUTH_COURSEPART_CODE">
+      <xs:selector xpath="b:Teachers/b:Teacher/b:Classes/b:CoursePartReference" />
+      <xs:field xpath="@code" />
+    </xs:keyref>
+  
+    <xs:key name="STUDENT_LOGIN">
+      <xs:selector xpath="b:Students/b:Student" />
+      <xs:field xpath="@login" />
+    </xs:key>
+    
+    <xs:keyref refer="STUDENT_LOGIN" name="SLAUTH_STUDENT_LOGIN">
+      <xs:selector xpath="b:Teachers/b:Teacher/b:Classes/b:CoursePartReference/b:Students/b:StudentReference" />
+      <xs:field xpath="@login" />
+    </xs:keyref>
+
+  </xs:element>
+</xs:schema>

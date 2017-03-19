@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Faculty of Mathematics and Information Sciences does not have enough lecturers to cover all laboratories.
+Therefore it hires its best students as external contractors.
+Dean would like to know the extent of the classes covered by external contractors (students in particular).
+
+Design a schema (following good practices) with the following set of restrictions:
+ * login consisting of small latin letters (at least one) and possibly digits at the end
+ * course part has an identifier of the form 1120XXXTP, where XXX is a code of course and TP is type: lc, lb, pr or ex
+ * course part type can be lecture, excercises, laboratories or project
+ * course part reference code must refer to one of the course parts code
+ * student reference login must  refer to one of the students logins
+Write an application:
+ * processing XML files which names are given as the runtime parameters
+ * validating each file against the schema and displaying the errors on error output:
+Error   The element 'Students' in namespace 'https://ww2.mini.pw.edu.pl/dla-studenta/plan/' has invalid child element 'ErasmusStudent' in namespace 'https://ww2.mini.pw.edu.pl/dla-studenta/plan/'. List of possible elements expected: 'StudentReference' in namespace 'https://ww2.mini.pw.edu.pl/dla-studenta/plan/'.       
+ * transforming XML with XSL and presenting all students' names and surnames ordered by the sum of the weekhours of the classes conducted by them:
+Jackie      Martin      7
+Donald      McAvoy      5
+Melissa     Kramer      0
+Dawn        Moor        0
+Elizabeth   Whitman     0
+Margaret    Timms       0
+Kenneth     Begley      0
+James       Gordon      0
+
+Evaluation rules:
+ (1p) Solution divided into separate projects
+ (1p) All the necessary files are maintained within a solution
+ (1p) Code generation in a prebuild event
+ (1p) Proper schema without redundand types
+ (1p) Transformation through an XSL document
+ (1p) XML is validated before any operations are performed on it
+ (1p) Schema properly restricts attribute and element values
+ (1p) Schema properly references collection by the sets of identifiers (aka keys)
+ (1p) Sorted list of students is displayed
+ (1p) Validation errors are printed out
+ 
+-->
+<Faculty xmlns="https://ww2.mini.pw.edu.pl/dla-studenta/plan/"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://ww2.mini.pw.edu.pl/dla-studenta/plan/ Faculty.xsd">
+  <Teachers>
+    <Teacher login="mcvvoyd">
+      <Name>Donald</Name>
+      <Surname>McAvoy</Surname>
+      <Classes>
+        <CoursePartReference code="1120002lc">
+          <Students>
+            <StudentReference login="kramerm" />
+            <StudentReference login="mcvvoyd" />
+            <StudentReference login="gordonj" />
+          </Students>
+        </CoursePartReference>
+        <CoursePartReference code="1120002pr">
+          <Students>
+            <StudentReference login="kramerm" />
+            <StudentReference login="begleyk" />
+          </Students>
+        </CoursePartReference>
+      </Classes>
+    </Teacher>
+    <Teacher login="coopern">
+      <Name>Noah</Name>
+      <Surname>Cooper</Surname>
+      <Classes>
+        <CoursePartReference code="1120001ex">
+          <Students>
+            <StudentReference login="kramerm" />
+            <StudentReference login="gordonj" />
+            <StudentReference login="begleyk" />
+          </Students>
+        </CoursePartReference>
+        <CoursePartReference code="1120002pr">
+          <Students>
+            <StudentReference login="mcvvoyd" />
+            <StudentReference login="martinj" />
+          </Students>
+        </CoursePartReference>
+      </Classes>
+    </Teacher>
+    <Teacher login="martinj">
+      <Name>Jackie</Name>
+      <Surname>Martin</Surname>
+      <Classes>
+        <CoursePartReference code="1120001ex">
+          <Students>
+            <StudentReference login="mcvvoyd" />
+            <StudentReference login="moord" />
+            <StudentReference login="martinj" />
+          </Students>
+        </CoursePartReference>
+        <CoursePartReference code="1120002pr">
+          <Students>
+            <StudentReference login="gordonj" />
+            <StudentReference login="whitmane" />
+            <StudentReference login="timmsm" />
+          </Students>
+        </CoursePartReference>
+      </Classes>
+    </Teacher>
+  </Teachers>
+  <Students>
+    <Student login="kramerm">
+      <Name>Melissa</Name>
+      <Surname>Kramer</Surname>
+    </Student>
+    <Student login="martinj">
+      <Name>Jackie</Name>
+      <Surname>Martin</Surname>
+    </Student>
+    <Student login="moord">
+      <Name>Dawn</Name>
+      <Surname>Moor</Surname>
+    </Student>
+    <Student login="mcvvoyd">
+      <Name>Donald</Name>
+      <Surname>McAvoy</Surname>
+    </Student>
+    <Student login="whitmane">
+      <Name>Elizabeth</Name>
+      <Surname>Whitman</Surname>
+    </Student>
+    <Student login="timmsm">
+      <Name>Margaret</Name>
+      <Surname>Timms</Surname>
+    </Student>
+    <Student login="begleyk">
+      <Name>Kenneth</Name>
+      <Surname>Begley</Surname>
+    </Student>
+    <Student login="gordonj">
+      <Name>James</Name>
+      <Surname>Gordon</Surname>
+    </Student>
+  </Students>
+  <Courses>
+    <Course name="Projects and developement">
+      <CoursePart code="1120001ex" type="exercises" weekhours="4" />
+    </Course>
+    <Course name="Business software deployement">
+      <CoursePart code="1120002lc" type="lecture" weekhours="2"  />
+      <CoursePart code="1120002pr" type="project" weekhours="3"  />
+    </Course>
+  </Courses>
+</Faculty>

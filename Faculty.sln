@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faculty", "Faculty\Faculty.csproj", "{47A91902-AAD4-4E65-B278-FA71C3D9185A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLProcessor", "XMLProcessor\XMLProcessor.csproj", "{3FF517F8-7895-4A07-8381-1C5D93D40717}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HTMLCreator", "HTMLCreator\HTMLCreator.csproj", "{B25ADC24-8309-4BF7-80E6-874F0B07E442}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{47A91902-AAD4-4E65-B278-FA71C3D9185A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47A91902-AAD4-4E65-B278-FA71C3D9185A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47A91902-AAD4-4E65-B278-FA71C3D9185A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47A91902-AAD4-4E65-B278-FA71C3D9185A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FF517F8-7895-4A07-8381-1C5D93D40717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FF517F8-7895-4A07-8381-1C5D93D40717}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FF517F8-7895-4A07-8381-1C5D93D40717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FF517F8-7895-4A07-8381-1C5D93D40717}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B25ADC24-8309-4BF7-80E6-874F0B07E442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B25ADC24-8309-4BF7-80E6-874F0B07E442}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B25ADC24-8309-4BF7-80E6-874F0B07E442}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B25ADC24-8309-4BF7-80E6-874F0B07E442}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
